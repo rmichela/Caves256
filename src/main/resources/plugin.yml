@@ -1,0 +1,6 @@
+name: Caves256
+version: "1.0.0"
+author: Deltahat
+main: com.ryanmichela.caves256.Plugin
+prefix: "Caves 256"
+load: STARTUP

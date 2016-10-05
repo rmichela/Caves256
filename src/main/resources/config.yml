@@ -1,0 +1,3 @@
+# Caves256 will bind to any world listed below.
+worlds:
+    - world       # The name of a world
