@@ -3,6 +3,7 @@ package com.ryanmichela.caves256;
 import org.bukkit.Chunk;
 import org.bukkit.World;
 import net.minecraft.server.v1_10_R1.ChunkSnapshot;
+import org.bukkit.craftbukkit.v1_10_R1.CraftChunk;
 import org.bukkit.craftbukkit.v1_10_R1.CraftWorld;
 import org.bukkit.generator.BlockPopulator;
 
@@ -19,7 +20,7 @@ public class Cave256Populator extends BlockPopulator {
         net.minecraft.server.v1_10_R1.World nmsWorld = ((CraftWorld) world).getHandle();
         int x = chunk.getX();
         int z = chunk.getZ();
-        ChunkSnapshot nmsSnapshot = new ChunkAdapter(chunk);
+        ChunkSnapshot nmsSnapshot = new ChunkSnapshotAdapter((CraftChunk)chunk);
 
         caveGen.a(nmsWorld, x, z, nmsSnapshot);
     }
