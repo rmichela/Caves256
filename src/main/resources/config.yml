@@ -1,3 +1,4 @@
 # Caves256 will bind to any world listed below.
 worlds:
-    - world       # The name of a world
+    - name: world       # The name of a world
+      iterations: 3     # The number of cave passes to run

@@ -15,7 +15,10 @@ public class WorldGenCaves256 extends WorldGenBase {
     protected static final IBlockData c;
     protected static final IBlockData d;
 
-    public WorldGenCaves256() {
+    private final int mixup;
+
+    public WorldGenCaves256(int mixup) {
+        this.mixup = mixup;
     }
 
     protected void a(long var1, int var3, int var4, ChunkSnapshot var5, double var6, double var8, double var10) {
@@ -27,7 +30,7 @@ public class WorldGenCaves256 extends WorldGenBase {
         double var21 = (double)(var4 * 16 + 8);
         float var23 = 0.0F;
         float var24 = 0.0F;
-        Random var25 = new Random(var1);
+        Random var25 = new Random(var1 + mixup);
         if(var16 <= 0) {
             int var26 = this.e * 16 - 16;
             var16 = var26 - var25.nextInt(var26 / 4);
@@ -179,7 +182,7 @@ public class WorldGenCaves256 extends WorldGenBase {
 
     protected void a(World var1, int var2, int var3, int var4, int var5, ChunkSnapshot var6) {
         int var7 = this.f.nextInt(this.f.nextInt(this.f.nextInt(15) + 1) + 1);
-        if(this.f.nextInt(7) != 0) {
+        if(this.f.nextInt(4) != 0) { // 7 -> 4
             var7 = 0;
         }
 

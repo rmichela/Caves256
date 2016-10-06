@@ -13,7 +13,11 @@ import java.util.Random;
  * Created by ryanmichela on 10/5/16.
  */
 public class Cave256Populator extends BlockPopulator {
-    private static WorldGenCaves256 caveGen = new WorldGenCaves256();
+    private WorldGenCaves256 caveGen;
+
+    public Cave256Populator(int mixup) {
+        caveGen = new WorldGenCaves256(mixup);
+    }
 
     @Override
     public void populate(World world, Random random, Chunk chunk) {
