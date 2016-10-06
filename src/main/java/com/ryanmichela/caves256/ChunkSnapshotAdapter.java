@@ -48,6 +48,11 @@ public class ChunkSnapshotAdapter extends ChunkSnapshot {
         }
 
         @Override
+        public Material getMaterial() {
+            return CraftMagicNumbers.getBlock(craftBlock).getBlockData().getMaterial();
+        }
+
+        @Override
         public Block getBlock() {
             return CraftMagicNumbers.getBlock(craftBlock);
         }
@@ -84,11 +89,6 @@ public class ChunkSnapshotAdapter extends ChunkSnapshot {
 
         @Override
         public void doPhysics(World world, BlockPosition blockPosition, Block block) {
-            throw new NotImplementedException();
-        }
-
-        @Override
-        public Material getMaterial() {
             throw new NotImplementedException();
         }
 
