@@ -10,11 +10,6 @@ import java.util.Random;
 import net.minecraft.server.v1_10_R1.*;
 
 public class WorldGenCaves256 extends WorldGenBase {
-    protected static final IBlockData a;
-    protected static final IBlockData b;
-    protected static final IBlockData c;
-    protected static final IBlockData d;
-
     private final int mixup;
 
     public WorldGenCaves256(int mixup) {
@@ -144,16 +139,16 @@ public class WorldGenCaves256 extends WorldGenBase {
                                         double var51 = ((double)(var50 - 1) + 0.5D - var8) / var31;
                                         if(var51 > -0.7D && var61 * var61 + var51 * var51 + var47 * var47 < 1.0D) {
                                             IBlockData var53 = var5.a(var43, var50, var46);
-                                            IBlockData var54 = (IBlockData)Objects.firstNonNull(var5.a(var43, var50 + 1, var46), b);
+                                            IBlockData var54 = (IBlockData)Objects.firstNonNull(var5.a(var43, var50 + 1, var46), Blocks.AIR.getBlockData());
                                             if(var53.getBlock() == Blocks.GRASS || var53.getBlock() == Blocks.MYCELIUM) {
                                                 var49 = true;
                                             }
 
                                             if(this.a(var53, var54)) {
                                                 if(var50 - 1 < 10) {
-                                                    var5.a(var43, var50, var46, a);
+                                                    var5.a(var43, var50, var46, Blocks.LAVA.getBlockData());
                                                 } else {
-                                                    var5.a(var43, var50, var46, b);
+                                                    var5.a(var43, var50, var46, Blocks.AIR.getBlockData());
                                                     if(var49 && var5.a(var43, var50 - 1, var46).getBlock() == Blocks.DIRT) {
                                                         var60.c(var43 + var3 * 16, 0, var46 + var4 * 16);
                                                         var5.a(var43, var50 - 1, var46, this.g.getBiome(var60).r.getBlock().getBlockData());
@@ -208,12 +203,5 @@ public class WorldGenCaves256 extends WorldGenBase {
             }
         }
 
-    }
-
-    static {
-        a = Blocks.LAVA.getBlockData();
-        b = Blocks.AIR.getBlockData();
-        c = Blocks.SANDSTONE.getBlockData();
-        d = Blocks.RED_SANDSTONE.getBlockData();
     }
 }
