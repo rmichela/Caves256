@@ -1,10 +1,10 @@
 package com.ryanmichela.caves256;
 
-import net.minecraft.server.v1_10_R1.BlockPosition;
-import net.minecraft.server.v1_10_R1.WorldGenerator;
+import net.minecraft.server.v1_11_R1.BlockPosition;
+import net.minecraft.server.v1_11_R1.WorldGenerator;
 import org.bukkit.Chunk;
 import org.bukkit.World;
-import org.bukkit.craftbukkit.v1_10_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_11_R1.CraftWorld;
 import org.bukkit.generator.BlockPopulator;
 
 import java.util.Random;
@@ -28,7 +28,7 @@ public class WorldGenAdapterPopulator extends BlockPopulator {
     @Override
     public void populate(World world, Random random, Chunk chunk) {
         BlockPosition position = chunkToBlockPosition(chunk);
-        net.minecraft.server.v1_10_R1.World nmsWorld = ((CraftWorld) world).getHandle();
+        net.minecraft.server.v1_11_R1.World nmsWorld = ((CraftWorld) world).getHandle();
 
         scatter(nmsWorld, random, position, tries, gen, low, high);
     }
@@ -37,7 +37,7 @@ public class WorldGenAdapterPopulator extends BlockPopulator {
         return new BlockPosition(chunk.getX() * 16, 0, chunk.getZ() * 16);
     }
 
-    private void scatter(net.minecraft.server.v1_10_R1.World world, Random random, BlockPosition startPoint, int tries,
+    private void scatter(net.minecraft.server.v1_11_R1.World world, Random random, BlockPosition startPoint, int tries,
                          WorldGenerator worldgenerator, int low, int high) {
         int l;
 

@@ -1,11 +1,11 @@
 package com.ryanmichela.caves256;
 
 import com.google.common.collect.ImmutableMap;
-import net.minecraft.server.v1_10_R1.*;
+import net.minecraft.server.v1_11_R1.*;
 import org.apache.commons.lang.NotImplementedException;
-import org.bukkit.craftbukkit.v1_10_R1.CraftChunk;
-import org.bukkit.craftbukkit.v1_10_R1.block.CraftBlock;
-import org.bukkit.craftbukkit.v1_10_R1.util.CraftMagicNumbers;
+import org.bukkit.craftbukkit.v1_11_R1.CraftChunk;
+import org.bukkit.craftbukkit.v1_11_R1.block.CraftBlock;
+import org.bukkit.craftbukkit.v1_11_R1.util.CraftMagicNumbers;
 
 import javax.annotation.Nullable;
 import java.util.Collection;
@@ -58,7 +58,7 @@ public class ChunkSnapshotAdapter extends ChunkSnapshot {
         }
 
         @Override
-        public Collection<IBlockState<?>> r() {
+        public Collection<IBlockState<?>> t() {
             throw new NotImplementedException();
         }
 
@@ -78,7 +78,7 @@ public class ChunkSnapshotAdapter extends ChunkSnapshot {
         }
 
         @Override
-        public ImmutableMap<IBlockState<?>, Comparable<?>> s() {
+        public ImmutableMap<IBlockState<?>, Comparable<?>> u() {
             throw new NotImplementedException();
         }
 
@@ -88,8 +88,8 @@ public class ChunkSnapshotAdapter extends ChunkSnapshot {
         }
 
         @Override
-        public void doPhysics(World world, BlockPosition blockPosition, Block block) {
-            throw new NotImplementedException();
+        public void doPhysics(World world, BlockPosition blockPosition, Block block, BlockPosition blockPosition1) {
+
         }
 
         @Override
@@ -138,12 +138,7 @@ public class ChunkSnapshotAdapter extends ChunkSnapshot {
         }
 
         @Override
-        public EnumRenderType i() {
-            throw new NotImplementedException();
-        }
-
-        @Override
-        public boolean k() {
+        public EnumRenderType j() {
             throw new NotImplementedException();
         }
 
@@ -159,6 +154,11 @@ public class ChunkSnapshotAdapter extends ChunkSnapshot {
 
         @Override
         public int a(IBlockAccess iBlockAccess, BlockPosition blockPosition, EnumDirection enumDirection) {
+            throw new NotImplementedException();
+        }
+
+        @Override
+        public boolean o() {
             throw new NotImplementedException();
         }
 
@@ -188,7 +188,7 @@ public class ChunkSnapshotAdapter extends ChunkSnapshot {
         }
 
         @Override
-        public EnumPistonReaction o() {
+        public EnumPistonReaction p() {
             throw new NotImplementedException();
         }
 
@@ -198,28 +198,37 @@ public class ChunkSnapshotAdapter extends ChunkSnapshot {
         }
 
         @Override
-        public boolean p() {
-            throw new NotImplementedException();
-        }
-
-        @Nullable
-        @Override
-        public AxisAlignedBB d(World world, BlockPosition blockPosition) {
-            throw new NotImplementedException();
-        }
-
-        @Override
-        public void a(World world, BlockPosition blockPosition, AxisAlignedBB axisAlignedBB, List<AxisAlignedBB> list, @Nullable Entity entity) {
-            throw new NotImplementedException();
-        }
-
-        @Override
         public AxisAlignedBB c(IBlockAccess iBlockAccess, BlockPosition blockPosition) {
             throw new NotImplementedException();
         }
 
         @Override
+        public void a(World world, BlockPosition blockPosition, AxisAlignedBB axisAlignedBB, List<AxisAlignedBB> list, @Nullable Entity entity, boolean b) {
+
+        }
+
+        @Override
+        public AxisAlignedBB d(IBlockAccess iBlockAccess, BlockPosition blockPosition) {
+            throw new NotImplementedException();
+        }
+
+        @Override
         public MovingObjectPosition a(World world, BlockPosition blockPosition, Vec3D vec3D, Vec3D vec3D1) {
+            throw new NotImplementedException();
+        }
+
+        @Override
+        public boolean r() {
+            throw new NotImplementedException();
+        }
+
+        @Override
+        public Vec3D e(IBlockAccess iBlockAccess, BlockPosition blockPosition) {
+            throw new NotImplementedException();
+        }
+
+        @Override
+        public boolean s() {
             throw new NotImplementedException();
         }
 

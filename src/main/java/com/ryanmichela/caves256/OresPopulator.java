@@ -1,8 +1,8 @@
 package com.ryanmichela.caves256;
 
-import net.minecraft.server.v1_10_R1.Blocks;
-import net.minecraft.server.v1_10_R1.CustomWorldSettingsFinal;
-import net.minecraft.server.v1_10_R1.WorldGenMinable;
+import net.minecraft.server.v1_11_R1.Blocks;
+import net.minecraft.server.v1_11_R1.CustomWorldSettingsFinal;
+import net.minecraft.server.v1_11_R1.WorldGenMinable;
 import org.bukkit.Chunk;
 import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;

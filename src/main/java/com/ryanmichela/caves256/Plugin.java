@@ -1,8 +1,8 @@
 package com.ryanmichela.caves256;
 
-import net.minecraft.server.v1_10_R1.CustomWorldSettingsFinal;
-import net.minecraft.server.v1_10_R1.WorldData;
-import org.bukkit.craftbukkit.v1_10_R1.CraftWorld;
+import net.minecraft.server.v1_11_R1.CustomWorldSettingsFinal;
+import net.minecraft.server.v1_11_R1.WorldData;
+import org.bukkit.craftbukkit.v1_11_R1.CraftWorld;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -30,7 +30,7 @@ public class Plugin extends JavaPlugin implements Listener {
                 getLogger().info("Attaching cave populator to world \"" + event.getWorld().getName() + "\"");
 
                 // Attach an ore populator
-                net.minecraft.server.v1_10_R1.World nmsWorld = ((CraftWorld) event.getWorld()).getHandle();
+                net.minecraft.server.v1_11_R1.World nmsWorld = ((CraftWorld) event.getWorld()).getHandle();
                 String configGeneratorSettings = nmsWorld.getServer().getServer().getPropertyManager().getString("generator-settings", "");
                 event.getWorld().getPopulators().add(new OresPopulator(CustomWorldSettingsFinal.CustomWorldSettings.a(configGeneratorSettings).b()));
 

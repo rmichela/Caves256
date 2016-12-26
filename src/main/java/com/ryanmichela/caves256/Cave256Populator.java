@@ -2,9 +2,9 @@ package com.ryanmichela.caves256;
 
 import org.bukkit.Chunk;
 import org.bukkit.World;
-import net.minecraft.server.v1_10_R1.ChunkSnapshot;
-import org.bukkit.craftbukkit.v1_10_R1.CraftChunk;
-import org.bukkit.craftbukkit.v1_10_R1.CraftWorld;
+import net.minecraft.server.v1_11_R1.ChunkSnapshot;
+import org.bukkit.craftbukkit.v1_11_R1.CraftChunk;
+import org.bukkit.craftbukkit.v1_11_R1.CraftWorld;
 import org.bukkit.generator.BlockPopulator;
 
 import java.util.Random;
@@ -21,7 +21,7 @@ public class Cave256Populator extends BlockPopulator {
 
     @Override
     public void populate(World world, Random random, Chunk chunk) {
-        net.minecraft.server.v1_10_R1.World nmsWorld = ((CraftWorld) world).getHandle();
+        net.minecraft.server.v1_11_R1.World nmsWorld = ((CraftWorld) world).getHandle();
         int x = chunk.getX();
         int z = chunk.getZ();
         ChunkSnapshot nmsSnapshot = new ChunkSnapshotAdapter((CraftChunk)chunk);

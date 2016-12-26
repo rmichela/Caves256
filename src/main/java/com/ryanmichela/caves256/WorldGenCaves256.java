@@ -7,7 +7,7 @@ package com.ryanmichela.caves256;
 
 import com.google.common.base.Objects;
 import java.util.Random;
-import net.minecraft.server.v1_10_R1.*;
+import net.minecraft.server.v1_11_R1.*;
 
 public class WorldGenCaves256 extends WorldGenBase {
     private final int mixup;
