@@ -20,7 +20,7 @@ public class WorldGenCaves256 extends WorldGenBase {
         this.a(var1, var3, var4, var5, var6, var8, var10, 1.0F + this.f.nextFloat() * 6.0F, 0.0F, 0.0F, -1, -1, 0.5D);
     }
 
-    protected void a(long var1, int var3, int var4, ChunkSnapshot var5, double var6, double var8, double var10, float var12, float var13, float var14, int var15, int var16, double var17) {
+    protected void a(long var1, int var3, int var4, ChunkSnapshot chunkSnapshot, double var6, double var8, double var10, float var12, float var13, float var14, int var15, int var16, double var17) {
         double var19 = (double)(var3 * 16 + 8);
         double var21 = (double)(var4 * 16 + 8);
         float var23 = 0.0F;
@@ -60,8 +60,8 @@ public class WorldGenCaves256 extends WorldGenBase {
             var24 += (var25.nextFloat() - var25.nextFloat()) * var25.nextFloat() * 2.0F;
             var23 += (var25.nextFloat() - var25.nextFloat()) * var25.nextFloat() * 4.0F;
             if(!var55 && var15 == var27 && var12 > 1.0F && var16 > 0) {
-                this.a(var25.nextLong(), var3, var4, var5, var6, var8, var10, var25.nextFloat() * 0.5F + 0.5F, var13 - 1.5707964F, var14 / 3.0F, var15, var16, 1.0D);
-                this.a(var25.nextLong(), var3, var4, var5, var6, var8, var10, var25.nextFloat() * 0.5F + 0.5F, var13 + 1.5707964F, var14 / 3.0F, var15, var16, 1.0D);
+                this.a(var25.nextLong(), var3, var4, chunkSnapshot, var6, var8, var10, var25.nextFloat() * 0.5F + 0.5F, var13 - 1.5707964F, var14 / 3.0F, var15, var16, 1.0D);
+                this.a(var25.nextLong(), var3, var4, chunkSnapshot, var6, var8, var10, var25.nextFloat() * 0.5F + 0.5F, var13 + 1.5707964F, var14 / 3.0F, var15, var16, 1.0D);
                 return;
             }
 
@@ -105,19 +105,19 @@ public class WorldGenCaves256 extends WorldGenBase {
                         var40 = 16;
                     }
 
-                    boolean var59 = false;
+                    boolean isInCave = false;
 
-                    int var43;
-                    for(int var42 = var56; !var59 && var42 < var36; ++var42) {
-                        for(var43 = var58; !var59 && var43 < var40; ++var43) {
-                            for(int var44 = var38 + 1; !var59 && var44 >= var57 - 1; --var44) {
+                    int x;
+                    for(int var42 = var56; !isInCave && var42 < var36; ++var42) {
+                        for(x = var58; !isInCave && x < var40; ++x) {
+                            for(int var44 = var38 + 1; !isInCave && var44 >= var57 - 1; --var44) {
                                 if(var44 >= 0 && var44 < 256) {
-                                    IBlockData var45 = var5.a(var42, var44, var43);
+                                    IBlockData var45 = chunkSnapshot.a(var42, var44, x);
                                     if(var45.getBlock() == Blocks.FLOWING_WATER || var45.getBlock() == Blocks.WATER) {
-                                        var59 = true;
+                                        isInCave = true;
                                     }
 
-                                    if(var44 != var57 - 1 && var42 != var56 && var42 != var36 - 1 && var43 != var58 && var43 != var40 - 1) {
+                                    if(var44 != var57 - 1 && var42 != var56 && var42 != var36 - 1 && x != var58 && x != var40 - 1) {
                                         var44 = var57;
                                     }
                                 }
@@ -125,33 +125,33 @@ public class WorldGenCaves256 extends WorldGenBase {
                         }
                     }
 
-                    if(!var59) {
-                        BlockPosition.MutableBlockPosition var60 = new BlockPosition.MutableBlockPosition();
+                    if(!isInCave) {
+                        BlockPosition.MutableBlockPosition blockPosition = new BlockPosition.MutableBlockPosition();
 
-                        for(var43 = var56; var43 < var36; ++var43) {
-                            double var61 = ((double)(var43 + var3 * 16) + 0.5D - var6) / var29;
+                        for(x = var56; x < var36; ++x) {
+                            double var61 = ((double)(x + var3 * 16) + 0.5D - var6) / var29;
 
-                            for(int var46 = var58; var46 < var40; ++var46) {
-                                double var47 = ((double)(var46 + var4 * 16) + 0.5D - var10) / var29;
-                                boolean var49 = false;
+                            for(int z = var58; z < var40; ++z) {
+                                double var47 = ((double)(z + var4 * 16) + 0.5D - var10) / var29;
+                                boolean isGrassOrMycelium = false;
                                 if(var61 * var61 + var47 * var47 < 1.0D) {
-                                    for(int var50 = var38; var50 > var57; --var50) {
-                                        double var51 = ((double)(var50 - 1) + 0.5D - var8) / var31;
+                                    for(int y = var38; y > var57; --y) {
+                                        double var51 = ((double)(y - 1) + 0.5D - var8) / var31;
                                         if(var51 > -0.7D && var61 * var61 + var51 * var51 + var47 * var47 < 1.0D) {
-                                            IBlockData var53 = var5.a(var43, var50, var46);
-                                            IBlockData var54 = (IBlockData)Objects.firstNonNull(var5.a(var43, var50 + 1, var46), Blocks.AIR.getBlockData());
-                                            if(var53.getBlock() == Blocks.GRASS || var53.getBlock() == Blocks.MYCELIUM) {
-                                                var49 = true;
+                                            IBlockData selectedBlock = chunkSnapshot.a(x, y, z);
+                                            IBlockData blockAbove = (IBlockData)Objects.firstNonNull(chunkSnapshot.a(x, y + 1, z), Blocks.AIR.getBlockData());
+                                            if(selectedBlock.getBlock() == Blocks.GRASS || selectedBlock.getBlock() == Blocks.MYCELIUM) {
+                                                isGrassOrMycelium = true;
                                             }
 
-                                            if(this.a(var53, var54)) {
-                                                if(var50 - 1 < 10) {
-                                                    var5.a(var43, var50, var46, Blocks.LAVA.getBlockData());
+                                            if(this.canMakeCave(selectedBlock, blockAbove)) {
+                                                if(y - 1 < 10) {
+                                                    chunkSnapshot.a(x, y, z, Blocks.LAVA.getBlockData());
                                                 } else {
-                                                    var5.a(var43, var50, var46, Blocks.AIR.getBlockData());
-                                                    if(var49 && var5.a(var43, var50 - 1, var46).getBlock() == Blocks.DIRT) {
-                                                        var60.c(var43 + var3 * 16, 0, var46 + var4 * 16);
-                                                        var5.a(var43, var50 - 1, var46, this.g.getBiome(var60).r.getBlock().getBlockData());
+                                                    chunkSnapshot.a(x, y, z, Blocks.AIR.getBlockData());
+                                                    if(isGrassOrMycelium && chunkSnapshot.a(x, y - 1, z).getBlock() == Blocks.DIRT) {
+                                                        blockPosition.c(x + var3 * 16, 0, z + var4 * 16);
+                                                        chunkSnapshot.a(x, y - 1, z, this.g.getBiome(blockPosition).r.getBlock().getBlockData());
                                                     }
                                                 }
                                             }
@@ -171,8 +171,20 @@ public class WorldGenCaves256 extends WorldGenBase {
 
     }
 
-    protected boolean a(IBlockData var1, IBlockData var2) {
-        return var1.getBlock() == Blocks.STONE?true:(var1.getBlock() == Blocks.DIRT?true:(var1.getBlock() == Blocks.GRASS?true:(var1.getBlock() == Blocks.HARDENED_CLAY?true:(var1.getBlock() == Blocks.STAINED_HARDENED_CLAY?true:(var1.getBlock() == Blocks.SANDSTONE?true:(var1.getBlock() == Blocks.RED_SANDSTONE?true:(var1.getBlock() == Blocks.MYCELIUM?true:(var1.getBlock() == Blocks.SNOW_LAYER?true:(var1.getBlock() == Blocks.SAND || var1.getBlock() == Blocks.GRAVEL) && var2.getMaterial() != Material.WATER))))))));
+    protected boolean canMakeCave(IBlockData block, IBlockData blockAbove) {
+        Block b = block.getBlock();
+        return  b == Blocks.STONE ||
+                b == Blocks.DIRT ||
+                b == Blocks.GRASS ||
+                b == Blocks.HARDENED_CLAY ||
+                b == Blocks.STAINED_HARDENED_CLAY ||
+                b == Blocks.SANDSTONE ||
+                b == Blocks.RED_SANDSTONE ||
+                b == Blocks.MYCELIUM ||
+                b == Blocks.SNOW_LAYER ||
+                b == Blocks.SAND ||
+                b == Blocks.GRAVEL ||
+                !blockAbove.getMaterial().isLiquid(); // == Water -> .isLiquid()
     }
 
     protected void a(World var1, int var2, int var3, int var4, int var5, ChunkSnapshot var6) {

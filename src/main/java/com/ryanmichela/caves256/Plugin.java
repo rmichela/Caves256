@@ -30,9 +30,9 @@ public class Plugin extends JavaPlugin implements Listener {
                 getLogger().info("Attaching cave populator to world \"" + event.getWorld().getName() + "\"");
 
                 // Attach an ore populator
-                net.minecraft.server.v1_11_R1.World nmsWorld = ((CraftWorld) event.getWorld()).getHandle();
-                String configGeneratorSettings = nmsWorld.getServer().getServer().getPropertyManager().getString("generator-settings", "");
-                event.getWorld().getPopulators().add(new OresPopulator(CustomWorldSettingsFinal.CustomWorldSettings.a(configGeneratorSettings).b()));
+//                net.minecraft.server.v1_11_R1.World nmsWorld = ((CraftWorld) event.getWorld()).getHandle();
+//                String configGeneratorSettings = nmsWorld.getServer().getServer().getPropertyManager().getString("generator-settings", "");
+//                event.getWorld().getPopulators().add(new OresPopulator(CustomWorldSettingsFinal.CustomWorldSettings.a(configGeneratorSettings).b()));
 
                 // Attach a cave populator after the ore populator, so caves cut through ore
                 for (int i = 0; i < Integer.parseInt(world.get("iterations").toString()); i++) {
@@ -40,16 +40,16 @@ public class Plugin extends JavaPlugin implements Listener {
                 }
 
                 // Disable standard ore and cave generation
-                CustomWorldSettingsFinal.CustomWorldSettings worldSettings = CustomWorldSettingsFinal.CustomWorldSettings.a(nmsWorld.getWorldData().getGeneratorOptions());
-                worldSettings.s = false; // useCaves
-                worldSettings.ae = 0; // coalCount
-                worldSettings.ai = 0; // ironCount
-                worldSettings.am = 0; // goldCount
-                worldSettings.aq = 0; // redstoneCount
-                worldSettings.au = 0; // diamondCount
-                worldSettings.ay = 0; // lapisCount
-                String settingsJson = worldSettings.toString();
-                setGeneratorOptions(nmsWorld.getWorldData(), settingsJson);
+//                CustomWorldSettingsFinal.CustomWorldSettings worldSettings = CustomWorldSettingsFinal.CustomWorldSettings.a(nmsWorld.getWorldData().getGeneratorOptions());
+//                worldSettings.s = false; // useCaves
+//                worldSettings.ae = 0; // coalCount
+//                worldSettings.ai = 0; // ironCount
+//                worldSettings.am = 0; // goldCount
+//                worldSettings.aq = 0; // redstoneCount
+//                worldSettings.au = 0; // diamondCount
+//                worldSettings.ay = 0; // lapisCount
+//                String settingsJson = worldSettings.toString();
+//                setGeneratorOptions(nmsWorld.getWorldData(), settingsJson);
             }
         }
     }
